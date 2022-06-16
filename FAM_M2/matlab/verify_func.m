@@ -22,7 +22,7 @@ path = [path_cr,'/',fname];
 switch fname
     case 'Deepsig'
         disp('Generate signal Deepsig');
-        temp = load('/home/jingyi/Documents/Projects/FFT/Code/SCDsim/DeepSig.mat').a(index,:,:);
+        temp = load('DeepSig.mat').a(index,:,:);
         temp=fi(Amp*(single(temp)./single(max(abs(temp)))),1,16,15);
         x = temp(:,:,1)+temp(:,:,2)*1i;
         x = [x x];

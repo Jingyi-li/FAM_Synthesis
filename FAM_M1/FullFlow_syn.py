@@ -54,7 +54,7 @@ def writetcl(fname,n):
     L = ['open_project -reset {}'.format(n[0]),'\n',
          'set_top {}'.format(n[1]),'\n',
          'add_files {} \n'.format(n[8]),
-         'add_files -tb {} \n'.format(n[9]),
+         #'add_files -tb {} \n'.format(n[9]),
          'open_solution \"solution_{}_{}_{}{}{}{}\"'.format(n[2],n[3],n[4],n[5],n[6],n[7]),'\n',
          'set_part {xczu28dr-ffvg1517-2-e} \n',
          'create_clock -period {} -name default'.format(n[3]),'\n',
