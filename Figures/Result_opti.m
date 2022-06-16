@@ -18,8 +18,8 @@ for idx_sig = 1:3
     for type = 1
         Matlab_path = ['./Data/',fnames{idx_sig},'/'];
         filepath = [Matlab_path,fnames{idx_sig},types{type},order,'Amp100Norm02v4.mat'];
-        disp(filepath);
-        load(filepath)
+        disp(fnames{idx_sig});
+        load(filepath);
         q1 = resultF.Scale.FirstFFTf;
         q2 = resultF.Scale.Multif;
         q3 = resultF.Scale.SecondFFTf;

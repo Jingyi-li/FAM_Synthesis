@@ -22,7 +22,7 @@ p1 = plot(cell2mat(unitBit_M1(2:17,6)), unibits_Dsp_M1, 'b*','DisplayName','FAM 
 p2 = plot(cell2mat(unitBit_M2(2:14,6)), unibits_Dsp_M2, 'r*','DisplayName','FAM M2');
 p3 = plot(op_M1(:,1),op_M1(:,2),'bs','DisplayName','FAM M1 optimize');
 p4 = plot(cell2mat(unitBit_M1(15,6)),unibits_Dsp_M1(14),'bO','DisplayName','Choosen for FAM M1');
-p5 = plot(cell2mat(unitBit_M2(5,6)),unibits_Dsp_M2(4),'rO','DisplayName','Choosen for FAM M2')
+p5 = plot(cell2mat(unitBit_M2(5,6)),unibits_Dsp_M2(4),'rO','DisplayName','Choosen for FAM M2');
 legend([p1,p2,p3,p4,p5],'Location','best');
 ylabel('Utilization of DSPs');
 xlabel('SQNR');
