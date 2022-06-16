@@ -1,7 +1,0 @@
-/FAM_M1/Result/*.mat
-/FAM_M2/Result/*.mat
-/FAM_M2/Result/*.dat
-/Figures/Data/Deepsig/*.mat
-/Figures/Data/SineCxn/*.mat
-/Figures/Data/SquareCxn/*.mat
-*.bit
