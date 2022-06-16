@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Thu Jun 16 00:03:46 2022
+| Date             : Thu Jun 16 18:49:43 2022
 | Host             : tuna running 64-bit Ubuntu 20.04.3 LTS
 | Command          : report_power -file SCD_Inter_wrapper_power_routed.rpt -pb SCD_Inter_wrapper_power_summary_routed.pb -rpx SCD_Inter_wrapper_power_routed.rpx
 | Design           : SCD_Inter_wrapper

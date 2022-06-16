@@ -47,16 +47,10 @@ if { $list_projs eq "" } {
    set_property BOARD_PART xilinx.com:zcu111:part0:1.2 [current_project]
 }
 
-#set_property  ip_repo_paths  {
-# /home/jingyi/SCDfunctions/Paper/Synthesis_M2_SCD/src/SynSCDHalf/solution_111_3_24242424/impl \
-# /home/jingyi/SCDfunctions/Paper/Synthesis_M2_SCD/src/SynM2OHalf/solution_111_3_24242424/impl \
-# /home/jingyi/SCDfunctions/Paper/Synthesis_M2_SCD/src/SynM2MHalf/solution_111_3_24242424/impl \
-# } [current_project]
-#update_ip_catalog
 set_property  ip_repo_paths  {
- /home/jingyi/SCDfunctions/Paper/Synthesis_M2_SCD/src/SynSCDFull/solution_111_3_24242424/impl \
- /home/jingyi/SCDfunctions/Paper/Synthesis_M2_SCD/src/SynM2OFull/solution_111_3_24242424/impl \
- /home/jingyi/SCDfunctions/Paper/Synthesis_M2_SCD/src/SynM2MFull/solution_111_3_24242424/impl \
+ /home/jingyi/SCDfunctions/Paper/FAM_Synthesis/FAM_M2/SynSCDFull/solution_111_3_24242424/impl \
+ /home/jingyi/SCDfunctions/Paper/FAM_Synthesis/FAM_M2/SynM2OFull/solution_111_3_24242424/impl \
+ /home/jingyi/SCDfunctions/Paper/FAM_Synthesis/FAM_M2/SynM2MFull/solution_111_3_24242424/impl \
  } [current_project]
 update_ip_catalog
 

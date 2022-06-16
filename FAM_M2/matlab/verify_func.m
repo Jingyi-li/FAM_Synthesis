@@ -1,7 +1,7 @@
 function verify_func(bitW,bitF1,bitCM,bitF2)
 %% Initialization
 Type = 'FAM';
-path_cr = '/mnt/RDS/Database/precision/Matlab';
+path_cr = './Data';
 
 
 fnames = {'Deepsig','Sine','SineCx','SineCxn','Square','SquareCx','SquareCxn','Triangle'};

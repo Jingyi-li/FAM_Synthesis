@@ -81,7 +81,7 @@ Projectname = ['SynSCD'+SIZE,'SynM2M'+SIZE,'SynM2O'+SIZE]
 Topmodel = ['model_SCD','Multi2Multi','Multi2One']
 addfiles = ['SplitIP_SCD_matrix.cpp','SplitIP_Multi2Multi_thred.cpp','SplitIP_Multi2One_thred.cpp']
 testbenchs = ['SplitIP_SCD_matrix_TB.cpp', 'SplitIP_Multi2Multi_thred_TB.cpp','SplitIP_Multi2One_thred_TB.cpp']
-for n in range(11,14):
+for n in range(1,14):
     for i in range(idxi):
         if i<4:
             paramn[i] = int(mat[n,i][0][0])
@@ -106,6 +106,24 @@ for n in range(11,14):
                 print('Run solution_{}_{}_{}{}{}{}'.format(paramp[2],paramp[3],paramn[0], paramn[1], paramn[2], paramn[3]))
                 writetcl('Synthesis.tcl',paramp)
                 execute_command('vivado_hls Synthesis.tcl')   # replace with 'vivado_hls run_sim.tcl'
+        #fix SCD_Inter.tcl
+        f1 = open('SCD_Inter.tcl','r+')
+        f2 = open('SCD_Inter2.tcl','w+')
+        count = 0
+        for ss in f1.readlines():
+            if count==50:
+                f2.write(' {}/SynSCD{}/solution_111_3_{}{}{}{}/impl \ \n'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
+            elif count==51:
+                f2.write(' {}/SynM2O{}/solution_111_3_{}{}{}{}/impl \ \n'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
+            elif count==52:
+                f2.write(' {}/SynM2M{}/solution_111_3_{}{}{}{}/impl \ \n'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
+            else:
+                f2.write(ss)
+            count=count+1
+
+        execute_command('rm SCD_Inter.tcl')   
+        execute_command('mv SCD_Inter2.tcl SCD_Inter.tcl')     
+        #sys.exit()        
         execute_command('make clean')
         execute_command('make all')
         execute_command('mv ./Jupyter/SCD_Inter.bit ./Jupyter/SCD_Inter_{}_{}{}{}{}.bit'.format(SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
@@ -114,7 +132,7 @@ for n in range(11,14):
         execute_command('mv ./SCD_Inter/SCD_Inter.runs/impl_1/SCD_Inter_wrapper_timing_summary_routed.rpt ./Result/Interface_report/{}/{}{}{}{}_timing.rpt'.format(SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
         execute_command('mv ./SCD_Inter/SCD_Inter.runs/impl_1/SCD_Inter_wrapper_power_routed.rpt ./Result/Interface_report/{}/{}{}{}{}_power.rpt'.format(SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
 
-    sys.exit()
+    #sys.exit()
 
 
 # In[ ]:

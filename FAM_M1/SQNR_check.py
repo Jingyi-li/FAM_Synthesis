@@ -96,7 +96,7 @@ for n in range(1,14):
             writetcl('SQNR_check.tcl',paramp)
             execute_command('vivado_hls SQNR_check.tcl')   # replace with 'vivado_hls run_sim.tcl'
             execute_command('cp ./FAM_M1/solution_{}_{}_{}{}{}{}'.format(paramp[2],paramp[3],paramn[0], paramn[1], paramn[2], paramn[3])+'/csim/report/model_csim.log '+'./Result/MR/VHLS_{}_{}_{}{}{}{}'.format(paramp[2],paramp[3],paramn[0], paramn[1], paramn[2], paramn[3])+'.log')
-    #sys.exit()
+    sys.exit()
 
 # In[ ]:
 
