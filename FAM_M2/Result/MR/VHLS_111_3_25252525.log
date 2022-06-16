@@ -1,0 +1,10 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../SQNR_check_TB.cpp in debug mode
+   Compiling ../../../../SQNR_check.cpp in debug mode
+   Generating csim.exe
+Save file 
+Results are good 
+The SQNR of output is: 125.185844 dB
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

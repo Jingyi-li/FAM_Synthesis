@@ -1,0 +1,4 @@
+The simulation SQNR is: 101.136787 dB 
+ The calculation SQNR is: 100.986595 dB 
+ The Result of simplify expression of SQNR with Normalization is: 100.911331 dB 
+ 

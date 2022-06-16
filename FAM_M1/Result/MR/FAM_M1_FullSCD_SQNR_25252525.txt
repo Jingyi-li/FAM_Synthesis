@@ -1,0 +1,2 @@
+The Result of simplify expression of SQNR with Normalization is: 58.015106 dB 
+ 
