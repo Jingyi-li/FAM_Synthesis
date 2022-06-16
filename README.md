@@ -17,7 +17,7 @@ Run FAM_Synthesis/Figures/REsult_dsp.m
 ![image](https://media.github.sydney.edu.au/user/6712/files/c8f77c00-ed7d-11ec-92c4-6aa21ad33958)
 
 ## Table 2
-Run FAM_Synthesis/Figures/Result_opti.m​
-22
+Run FAM_Synthesis/Figures/Result_opti.m
+
 ![image](https://media.github.sydney.edu.au/user/6712/files/a6b22e00-ed7e-11ec-8b98-249df1c3649b)
-23
+
