@@ -18,6 +18,7 @@
 #define Np 256//16
 #define L Np/4
 #define P 32//8
+#define P_log2 5
 #define Phalf P/2 // half size of PL
 #define N 2048//32 // the length of input data
 #define STRIDE_N Np*Np/STRIDE
@@ -27,7 +28,8 @@
 #define OUTBIT 20
 #define SIZE 1
 
-#define PARALLEL 4
+#define PARALLEL SIZE
+#define PARALLELS 4
 #define LENGTH L*(P/PARALLEL-1)+Np
 
 //small size:
@@ -42,7 +44,7 @@
 //#define THRESHOLD 0.05
 //#define OUTBIT 20
 
-
+typedef unsigned char dint_t;
 typedef ap_fixed<18, 1, AP_RND, AP_SAT> exp_fixed_t; // exponential coefficients <18, 1>
 typedef ap_fixed<F1f+2, 1, AP_RND, AP_SAT> exp_fixed_t1; // exponential coefficients for First FFT
 typedef ap_fixed<F2f+2, 1, AP_RND, AP_SAT> exp_fixed_t2; // exponential coefficients for Second FFT

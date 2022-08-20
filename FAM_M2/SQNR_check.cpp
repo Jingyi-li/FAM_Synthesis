@@ -16,8 +16,8 @@ using namespace hls;
 void save_input(
 		stream<AXI_in_check >& i_in,
 		stream<AXI_in_check >& q_in,
-		single_fixed_t i_out[PARALLEL][LENGTH],
-		single_fixed_t q_out[PARALLEL][LENGTH],
+		single_fixed_t i_out[PARALLELS][LENGTH],
+		single_fixed_t q_out[PARALLELS][LENGTH],
 		bool &last
 ){
 #pragma HLS ARRAY_PARTITION variable=i_out complete dim=1
@@ -26,9 +26,9 @@ void save_input(
 #pragma HLS PIPELINE
 		AXI_in_check tempi = i_in.read();
 		AXI_in_check tempq = q_in.read();
-		for (int j=0;j<PARALLEL;j++){
+		for (int j=0;j<PARALLELS;j++){
 #pragma HLS UNROLL
-			int start = N/PARALLEL*j;
+			int start = N/PARALLELS*j;
 			if (start<=i && i<start+LENGTH){
 				i_out[j][i-start] = single_fixed_t(tempi.data);
 				q_out[j][i-start] = single_fixed_t(tempq.data);
@@ -41,8 +41,8 @@ void save_input(
 		}
 	}
 	for (int i=LENGTH-Np+L;i<LENGTH;i++){
-		i_out[PARALLEL-1][i] = 0;
-		q_out[PARALLEL-1][i] = 0;
+		i_out[PARALLELS-1][i] = 0;
+		q_out[PARALLELS-1][i] = 0;
 	}
 }
 
@@ -120,8 +120,8 @@ void ShiftFrequency(
 void DownConversion_array(
 		single_fixed_t1 i_in[Np],
 		single_fixed_t1 q_in[Np],
-		single_fixed_t2 i_out[P/PARALLEL][Np],
-		single_fixed_t2 q_out[P/PARALLEL][Np],
+		single_fixed_t2 i_out[P/PARALLELS][Np],
+		single_fixed_t2 q_out[P/PARALLELS][Np],
 		const unsigned orderi,
 		const unsigned order
 ){
@@ -155,8 +155,8 @@ void DownConversion_array(
 void preprocess(
 		single_fixed_t i_in[LENGTH],
 		single_fixed_t q_in[LENGTH],
-		single_fixed_t2 i_out[P/PARALLEL][Np],
-		single_fixed_t2 q_out[P/PARALLEL][Np],
+		single_fixed_t2 i_out[P/PARALLELS][Np],
+		single_fixed_t2 q_out[P/PARALLELS][Np],
 		const unsigned orderi,
 		const unsigned orderj
 ){
@@ -165,7 +165,7 @@ void preprocess(
 	cmpxDataOut xk[Np];
 	single_fixed_t1 i_fft[Np];
 	single_fixed_t1 q_fft[Np];
-	int order = orderi+orderj*P/PARALLEL;
+	int order = orderi+orderj*P/PARALLELS;
 	fram_windowing(i_in,q_in,xn,orderi);
 	fft_ip_256_array(xn,xk);
 	ShiftFrequency(xk,i_fft,q_fft);
@@ -173,13 +173,13 @@ void preprocess(
 
 }
 void preprocess_parallel(
-		single_fixed_t i_in[PARALLEL][LENGTH],
-		single_fixed_t q_in[PARALLEL][LENGTH],
-		single_fixed_t2 i_out[PARALLEL][P/PARALLEL][Np],
-		single_fixed_t2 q_out[PARALLEL][P/PARALLEL][Np]
+		single_fixed_t i_in[PARALLELS][LENGTH],
+		single_fixed_t q_in[PARALLELS][LENGTH],
+		single_fixed_t2 i_out[PARALLELS][P/PARALLELS][Np],
+		single_fixed_t2 q_out[PARALLELS][P/PARALLELS][Np]
 ){
-	for(int i=0;i<P/PARALLEL;i++){
-		for (int j=0;j<PARALLEL;j++){
+	for(int i=0;i<P/PARALLELS;i++){
+		for (int j=0;j<PARALLELS;j++){
 #pragma HLS UNROLL
 #pragma HLS dependence variable=i_in inter false
 #pragma HLS dependence variable=q_in inter false
@@ -191,8 +191,8 @@ void preprocess_parallel(
 }
 
 void save_output(
-		single_fixed_t2 i_temp[PARALLEL][P/PARALLEL][Np],
-		single_fixed_t2 q_temp[PARALLEL][P/PARALLEL][Np],
+		single_fixed_t2 i_temp[PARALLELS][P/PARALLELS][Np],
+		single_fixed_t2 q_temp[PARALLELS][P/PARALLELS][Np],
 		single_fixed_t2 i_out[Np][P],
 		single_fixed_t2 q_out[Np][P]
 ){
@@ -201,11 +201,11 @@ void save_output(
 					1,17,9,25,5,21,13,29,3,19,11,27,7,23,15,31
 			};
 	for(int i=0;i<Np;i++){
-		for(int k=0;k<P/PARALLEL;k++){
+		for(int k=0;k<P/PARALLELS;k++){
 #pragma HLS PIPELINE
-			for(int j=0;j<PARALLEL;j++){
+			for(int j=0;j<PARALLELS;j++){
 #pragma HLS UNROLL
-				int idx = outorder[j*(P/PARALLEL)+k];
+				int idx = outorder[j*(P/PARALLELS)+k];
 				i_out[i][idx] = i_temp[j][k][i];
 				q_out[i][idx] = q_temp[j][k][i];
 			}
@@ -223,12 +223,12 @@ void complexDemodulate_array(
 //#pragma HLS ARRAY_PARTITION variable=i_out complete dim=2
 //#pragma HLS ARRAY_PARTITION variable=q_out complete dim=2
 #pragma HLS DATAFLOW
-	single_fixed_t i_array[PARALLEL][LENGTH];
-	single_fixed_t q_array[PARALLEL][LENGTH];
+	single_fixed_t i_array[PARALLELS][LENGTH];
+	single_fixed_t q_array[PARALLELS][LENGTH];
 #pragma HLS ARRAY_PARTITION variable=i_array complete dim=1
 #pragma HLS ARRAY_PARTITION variable=q_array complete dim=1
-	single_fixed_t2 i_temp[PARALLEL][P/PARALLEL][Np];
-	single_fixed_t2 q_temp[PARALLEL][P/PARALLEL][Np];
+	single_fixed_t2 i_temp[PARALLELS][P/PARALLELS][Np];
+	single_fixed_t2 q_temp[PARALLELS][P/PARALLELS][Np];
 #pragma HLS ARRAY_PARTITION variable=i_temp complete dim=1
 #pragma HLS ARRAY_PARTITION variable=q_temp complete dim=1
 

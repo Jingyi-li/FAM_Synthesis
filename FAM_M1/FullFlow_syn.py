@@ -8,6 +8,7 @@ import scipy.io
 import numpy as np
 import os
 import re
+import time
 from ctypes import *  
 
 
@@ -41,7 +42,7 @@ def writefile(fname, n,m):
          '#define CMf {}'.format(n[2]),'\n',
          '#define F2f {}'.format(n[3]),'\n',
          '#define fileinput "', cpath,'/',signal,'.dat"\n',
-         '#define fileresult "', cpath,'/Result/',signal,'_float_result_full.dat"\n'.format(n[0],n[1],n[2],n[3]),
+         '#define fileresult "', cpath,'/Result/',signal,'_float_result_full{}{}{}{}.dat"\n'.format(n[0],n[1],n[2],n[3]),
          '#define filename "',cpath,'/Result/',Signal,'/FAM',signal,'{}'.format(n[0]),
          '{}'.format(n[1]),'{}'.format(n[2]),'{}'.format(n[3]), '.dat"\n',
          '#define errorfile "',cpath,'/Result/SCDerror.dat"\n',
@@ -78,7 +79,7 @@ Projectname = ['SynSCD'+SIZE,'SynM2M'+SIZE,'SynM2O'+SIZE]
 Topmodel = ['model_SCD','Multi2Multi','Multi2One']
 addfiles = ['SplitIP_SCD_matrix.cpp','SplitIP_Multi2Multi_thred.cpp','SplitIP_Multi2One_thred.cpp']
 testbenchs = ['SplitIP_SCD_matrix_TB.cpp', 'SplitIP_Multi2Multi_thred_TB.cpp','SplitIP_Multi2One_thred_TB.cpp']
-for n in range(1,14):
+for n in range(3,4):
     for i in range(idxi):
         if i<4:
             paramn[i] = int(mat[n,i][0][0])
@@ -105,21 +106,32 @@ for n in range(1,14):
                 #sys.exit()
                 execute_command('vivado_hls Synthesis.tcl')   # replace with 'vivado_hls run_sim.tcl'
         #fix SCD_Inter.tcl
-        f1 = open('SCD_Inter.tcl','r+')
-        f2 = open('SCD_Inter2.tcl','w+')
-        count = 0
-        for ss in f1.readlines():
-            if count==50:
-                f2.write(' {}/SynSCD{}/solution_111_3_{}{}{}{}/impl \ \n'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
-            elif count==51:
-                f2.write(' {}/SynM2O{}/solution_111_3_{}{}{}{}/impl \ \n'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
-            elif count==52:
-                f2.write(' {}/SynM2M{}/solution_111_3_{}{}{}{}/impl \ \n'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
-            else:
-                f2.write(ss)
-            count=count+1
-        execute_command('rm SCD_Inter.tcl')   
-        execute_command('mv SCD_Inter2.tcl SCD_Inter.tcl')     
+	        #sys.exit() 
+        try:
+            os.rename('SCD_Inter.tcl','SCD_Inter2.tcl') 
+            f1 = open('SCD_Inter2.tcl','r+')
+            f2 = open('SCD_Inter.tcl','w+')
+            count = 0
+            for ss in f1.readlines():
+                if count==50:
+                    f2.write(' {}/SynSCD{}/solution_111_3_{}{}{}{}/impl \\'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
+                    f2.write('\n')
+                elif count==51:
+                    f2.write(' {}/SynM2O{}/solution_111_3_{}{}{}{}/impl \\'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
+                    f2.write('\n')
+                elif count==52:
+                    f2.write(' {}/SynM2M{}/solution_111_3_{}{}{}{}/impl \\'.format(cpath,SIZE,paramn[0], paramn[1], paramn[2], paramn[3]))
+                    f2.write('\n')
+                else:
+                    f2.write(ss)
+                count=count+1
+        finally:
+            print("finish to write")   
+            f1.close()  
+            f2.close() 
+            execute_command('rm SCD_Inter2.tcl')           
+  
+        print("Try to run vivado")    
         #sys.exit()        
         execute_command('make clean')
         execute_command('make all')

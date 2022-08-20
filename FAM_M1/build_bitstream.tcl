@@ -6,6 +6,9 @@ set design_name "SCD_Inter"
 open_project -quiet ./${overlay_name}/${overlay_name}.xpr
 open_bd_design ./${overlay_name}/${overlay_name}.srcs/sources_1/bd/${design_name}/${design_name}.bd
 
+set_property strategy Flow_PerfOptimized_high [get_runs synth_1]
+set_property strategy Performance_ExtraTimingOpt [get_runs impl_1]
+
 # synthesis
 launch_runs synth_1 -jobs 8
 wait_on_run synth_1

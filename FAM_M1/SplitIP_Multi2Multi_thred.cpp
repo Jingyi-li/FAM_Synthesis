@@ -51,33 +51,31 @@ void Threshold_func(
 
 }
 
-
 void Multi2Multi(
-		hls::stream<AXI_inter> r_AXI_in1[Phalf],
-		hls::stream<AXI_inter> r_AXI_in2[Phalf],
-		hls::stream<AXI_SCD> r_AXI_out1[Phalf],
-		hls::stream<AXI_SCD> r_AXI_out2[Phalf]
+		hls::stream<AXI_inter> r_AXI_in[STRIDE][Phalf],
+		hls::stream<AXI_SCD> r_AXI_out[STRIDE][Phalf]
 ){
 #pragma HLS PIPELINE
-#pragma HLS INTERFACE axis register port=r_AXI_in1
-#pragma HLS INTERFACE axis register port=r_AXI_in2
-#pragma HLS INTERFACE axis register port=r_AXI_out1
-#pragma HLS INTERFACE axis register port=r_AXI_out2
+#pragma HLS INTERFACE axis register port=r_AXI_in
+#pragma HLS INTERFACE axis register port=r_AXI_out
 #pragma HLS INTERFACE s_axilite register port=return
 
 	static int countn;
 	int k = countn/256;
 	int i = countn%256;
-	Threshold_func(r_AXI_in1,r_AXI_out1,k,i,countn);
-	i +=1;
-	Threshold_func(r_AXI_in2,r_AXI_out2,k,i,countn);
-	if (countn<FULLLOOPS/SIZE-2){
-		countn +=2;
+	for (int ll=0;ll<STRIDE;ll++){
+#pragma HLS UNROLL
+		Threshold_func(r_AXI_in[ll],r_AXI_out[ll],k,i,countn);
+		i +=1;
+	}
+	if (countn<FULLLOOPS/SIZE-STRIDE){
+		countn +=STRIDE;
 	}else{
 		countn = 0;
 	}
 
 }
+
 
 
 

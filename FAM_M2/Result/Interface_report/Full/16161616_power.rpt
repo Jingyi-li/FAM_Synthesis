@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Wed Jun 15 20:18:42 2022
+| Date             : Wed Aug  3 22:27:08 2022
 | Host             : tuna running 64-bit Ubuntu 20.04.3 LTS
 | Command          : report_power -file SCD_Inter_wrapper_power_routed.rpt -pb SCD_Inter_wrapper_power_summary_routed.pb -rpx SCD_Inter_wrapper_power_routed.rpx
 | Design           : SCD_Inter_wrapper
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 5.773        |
+| Total On-Chip Power (W)  | 6.102        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 4.559        |
-| Device Static (W)        | 1.214        |
+| Dynamic (W)              | 4.884        |
+| Device Static (W)        | 1.218        |
 | Effective TJA (C/W)      | 0.8          |
-| Max Ambient (C)          | 95.1         |
-| Junction Temperature (C) | 29.9         |
+| Max Ambient (C)          | 94.9         |
+| Junction Temperature (C) | 30.1         |
 | Confidence Level         | Medium       |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,24 +52,24 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.321 |        3 |       --- |             --- |
-| CLB Logic                |     0.550 |   229980 |       --- |             --- |
-|   LUT as Logic           |     0.386 |    86458 |    425280 |           20.33 |
-|   LUT as Distributed RAM |     0.063 |     1386 |    213600 |            0.65 |
-|   LUT as Shift Register  |     0.042 |     4901 |    213600 |            2.29 |
-|   CARRY8                 |     0.041 |     7565 |     53160 |           14.23 |
-|   Register               |     0.017 |    92651 |    850560 |           10.89 |
-|   BUFG                   |    <0.001 |        8 |        64 |           12.50 |
-|   Others                 |     0.000 |     7031 |       --- |             --- |
-|   F7/F8 Muxes            |     0.000 |      211 |    425280 |            0.05 |
-| Signals                  |     0.699 |   191832 |       --- |             --- |
-| Block RAM                |     0.323 |      177 |      1080 |           16.39 |
-| DSPs                     |     0.361 |      908 |      4272 |           21.25 |
+| Clocks                   |     0.311 |        3 |       --- |             --- |
+| CLB Logic                |     0.773 |   201159 |       --- |             --- |
+|   LUT as Logic           |     0.586 |    80701 |    425280 |           18.98 |
+|   LUT as Distributed RAM |     0.064 |     1281 |    213600 |            0.60 |
+|   LUT as Shift Register  |     0.055 |     3068 |    213600 |            1.44 |
+|   CARRY8                 |     0.045 |     7596 |     53160 |           14.29 |
+|   Register               |     0.023 |    74722 |    850560 |            8.79 |
+|   BUFG                   |    <0.001 |        5 |        64 |            7.81 |
+|   Others                 |     0.000 |     5585 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |      134 |    425280 |            0.03 |
+| Signals                  |     0.936 |   173838 |       --- |             --- |
+| Block RAM                |     0.261 |      162 |      1080 |           15.00 |
+| DSPs                     |     0.297 |      934 |      4272 |           21.86 |
 | PS8                      |     2.306 |        1 |       --- |             --- |
-| Static Power             |     1.214 |          |           |                 |
+| Static Power             |     1.218 |          |           |                 |
 |   PS Static              |     0.099 |          |           |                 |
-|   PL Static              |     1.115 |          |           |                 |
-| Total                    |     5.773 |          |           |                 |
+|   PL Static              |     1.118 |          |           |                 |
+| Total                    |     6.102 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -79,9 +79,9 @@ Table of Contents
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source          | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint          |       0.850 |     2.926 |       2.603 |      0.324 |       NA    | Unspecified | NA         |
+| Vccint          |       0.850 |     3.324 |       2.997 |      0.327 |       NA    | Unspecified | NA         |
 | Vccint_io       |       0.850 |     0.071 |       0.000 |      0.071 |       NA    | Unspecified | NA         |
-| Vccbram         |       0.850 |     0.052 |       0.047 |      0.005 |       NA    | Unspecified | NA         |
+| Vccbram         |       0.850 |     0.041 |       0.036 |      0.005 |       NA    | Unspecified | NA         |
 | Vccaux          |       1.800 |     0.278 |       0.000 |      0.278 |       NA    | Unspecified | NA         |
 | Vccaux_io       |       1.800 |     0.058 |       0.000 |      0.058 |       NA    | Unspecified | NA         |
 | Vcco33          |       3.300 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -107,13 +107,13 @@ Table of Contents
 | VCCO_PSIO2_502  |       1.800 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | VCCO_PSIO3_503  |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | VCC_PSADC       |       1.800 |     0.002 |       0.000 |      0.002 |       NA    | Unspecified | NA         |
-| VCCINT_AMS      |       0.850 |     0.010 |       0.000 |      0.010 |       NA    | Unspecified | NA         |
+| VCCINT_AMS      |       0.850 |     0.011 |       0.000 |      0.011 |       NA    | Unspecified | NA         |
 | DACAVCC         |       0.925 |     0.008 |       0.000 |      0.008 |       NA    | Unspecified | NA         |
 | DACAVCCAUX      |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | DACAVTT         |       2.500 |     0.005 |       0.000 |      0.005 |       NA    | Unspecified | NA         |
 | ADCAVCC         |       0.925 |     0.012 |       0.000 |      0.012 |       NA    | Unspecified | NA         |
 | ADCAVCCAUX      |       1.800 |     0.049 |       0.000 |      0.049 |       NA    | Unspecified | NA         |
-| VCCSDFEC        |       0.850 |     0.031 |       0.000 |      0.031 |       NA    | Unspecified | NA         |
+| VCCSDFEC        |       0.850 |     0.032 |       0.000 |      0.032 |       NA    | Unspecified | NA         |
 | MGTYAVcc        |       0.900 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTYAVtt        |       1.200 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | MGTYVccaux      |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -173,32 +173,32 @@ Table of Contents
 +-----------------------+-----------+
 | Name                  | Power (W) |
 +-----------------------+-----------+
-| SCD_Inter_wrapper     |     4.559 |
-|   SCD_Inter_i         |     4.559 |
-|     Multi2Multi_0     |     0.105 |
-|       inst            |     0.105 |
-|     Multi2One_0       |     0.028 |
-|       inst            |     0.028 |
+| SCD_Inter_wrapper     |     4.884 |
+|   SCD_Inter_i         |     4.884 |
+|     Multi2Multi_0     |     0.735 |
+|       inst            |     0.735 |
+|     Multi2One_0       |     0.035 |
+|       inst            |     0.035 |
 |     axi_dma_0         |     0.004 |
 |       U0              |     0.004 |
 |     axi_dma_1         |     0.004 |
 |       U0              |     0.004 |
-|     axi_dma_2         |     0.006 |
-|       U0              |     0.006 |
-|     axi_dma_3         |     0.007 |
-|       U0              |     0.007 |
-|     axi_dma_4         |     0.006 |
-|       U0              |     0.006 |
-|     axi_smc           |     0.126 |
-|       inst            |     0.126 |
-|     model_SCD_0       |     1.930 |
-|       inst            |     1.930 |
-|     ps8_0_axi_periph  |     0.026 |
+|     axi_dma_2         |     0.008 |
+|       U0              |     0.008 |
+|     axi_dma_3         |     0.008 |
+|       U0              |     0.008 |
+|     axi_dma_4         |     0.008 |
+|       U0              |     0.008 |
+|     axi_smc           |     0.133 |
+|       inst            |     0.133 |
+|     model_SCD_0       |     1.614 |
+|       inst            |     1.614 |
+|     ps8_0_axi_periph  |     0.027 |
 |       s00_couplers    |     0.011 |
-|       s01_couplers    |     0.011 |
+|       s01_couplers    |     0.012 |
 |       xbar            |     0.004 |
-|     zynq_ultra_ps_e_0 |     2.316 |
-|       inst            |     2.316 |
+|     zynq_ultra_ps_e_0 |     2.310 |
+|       inst            |     2.310 |
 +-----------------------+-----------+
 
 
