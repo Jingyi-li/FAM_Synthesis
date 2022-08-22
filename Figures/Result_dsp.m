@@ -14,7 +14,7 @@ p1 = plot(unibits_M1, unibits_Dsp_M1, 'b*','DisplayName','FAM M1');
 p2 = plot(unibits_M2, unibits_Dsp_M2, 'r*','DisplayName','FAM M2');
 legend([p1,p2],'Location','best');
 ylabel('Utilization of DSPs');
-xlabel('uniform bits');
+xlabel('Wordlength');
 %%
 figure
 hold on;

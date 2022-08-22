@@ -15,7 +15,7 @@ p3 = plot(unibits_M2, unibits_FF_M2, 'r','DisplayName','FFs');
 p4 = plot(unibits_M2, unibits_BRAM_M2, 'c','DisplayName','BRAMs');
 legend([p1,p2,p3,p4],'Location','best');
 ylabel('Utilization Rate (%)');
-xlabel('uniform bits');
+xlabel('Wordlength');
 
 
 unibits_LUT_M1 = [18.57, 14.80,16.94,17.93,19.2,23.46,30.07,33.12,31.16,21.52, 21.90,23.36,23.42]';
@@ -34,5 +34,5 @@ p3 = plot(unibits_M1, unibits_FF_M1, 'r','DisplayName','FFs');
 p4 = plot(unibits_M1, unibits_BRAM_M1, 'c','DisplayName','BRAMs');
 legend([p1,p2,p3,p4],'Location','best');
 ylabel('Utilization Rate (%)');
-xlabel('uniform bits');
+xlabel('Wordlength');
 ylim([0 70])
