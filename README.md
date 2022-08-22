@@ -20,7 +20,7 @@ Run FAM_Synthesis/Figures/Result_dsp.m
 Run FAM_Synthesis/Figures/Result_utilize.m
 ![Screenshot from 2022-08-22 18-17-29](https://user-images.githubusercontent.com/33167403/185887529-108292c5-da90-4d80-bc83-02c39a53fc9b.png)
 
-## Table 2
+## Table 3
 Run FAM_Synthesis/Figures/Result_opti.m
 
 ![image](https://media.github.sydney.edu.au/user/6712/files/a6b22e00-ed7e-11ec-8b98-249df1c3649b)
