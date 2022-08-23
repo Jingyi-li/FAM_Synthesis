@@ -2,8 +2,7 @@
 User guide of how to use the code
 
 ## SQNR check
-Run python3 SQNR_check.py
-The result of computation and simulation is saved in ./Result/MR
+SQNR check for FAM_M2 is same with the Full size of FAM_M2
 
 ## Implementation
 Run python3 FullFlow_syn.py
