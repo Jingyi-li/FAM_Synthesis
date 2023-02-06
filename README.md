@@ -1,5 +1,5 @@
 # FAM_Synthesis
-Result of paper can be reproduced from FAM_Synthesis/Figures
+Results of the paper can be reproduced from FAM_Synthesis/Figures
 ## Results
 ### Figure 6 & 12
 Run FAM_Synthesis/Figure/Result_sqnr.m
