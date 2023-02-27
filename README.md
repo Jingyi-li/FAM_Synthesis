@@ -1,6 +1,6 @@
 # FAM_Synthesis
 This work corresponds to the ACM Transactions on Reconfigurable Technology and Systems Paper: https://dl.acm.org/doi/abs/10.1145/3567429
-
+## Citation
 If you want to use this code please cite our paper:
 
 ```
@@ -20,7 +20,8 @@ month = {oct},
 keywords = {FAM, HLS, SCD, FPGAs., quantization error}
 }
 ```
-
+and cite it using the following DOI: 10.5281/zenodo.7679339
+Please also reference the included `citation.cff` file for more information.
 ## Results
 Results of the paper can be reproduced from FAM_Synthesis/Figures
 ### Figure 6 & 12
