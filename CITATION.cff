@@ -1,0 +1,14 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it using the following DOI: 10.5281/zenodo.7679339"
+title: Jingyi-li/FAM_Synthesis: FAM_Synthesis
+version: V1.0.0
+date-released: 2023-02-27
+license: MIT
+authors:
+  - family-names: Carol Jingyi
+    given-names: Li
+    email: jingyi.li@sydney.edu.au
+    orcid: https://orcid.org/0000-0001-7638-6323
+
+
+            
