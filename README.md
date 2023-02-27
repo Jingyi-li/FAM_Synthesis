@@ -21,6 +21,7 @@ keywords = {FAM, HLS, SCD, FPGAs., quantization error}
 }
 ```
 and cite it using the following DOI: 10.5281/zenodo.7679339
+
 Please also reference the included `citation.cff` file for more information.
 ## Results
 Results of the paper can be reproduced from FAM_Synthesis/Figures
