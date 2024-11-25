@@ -20,7 +20,7 @@ month = {oct},
 keywords = {FAM, HLS, SCD, FPGAs., quantization error}
 }
 ```
-and cite it using the following DOI: 10.5281/zenodo.7679339
+and cite it using the following [DOI: 10.5281/zenodo.7679339](https://zenodo.org/records/7679339)
 
 Please also reference the included `citation.cff` file for more information.
 ## Results
